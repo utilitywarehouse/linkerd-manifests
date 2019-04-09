@@ -1,0 +1,8 @@
+resources:
+  - 05-auth-linkerd-ca.yaml
+  - 05-auth-linkerd-cni.yaml
+  - 05-auth-linkerd-controller.yaml
+  - linkerd-ca.yaml
+  - linkerd-cni.yaml
+  - linkerd-controller.yaml
+  - linkerd-web.yaml
