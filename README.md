@@ -6,6 +6,8 @@ each namespace that has a prometheus/thanos deployment will need to add the foll
     - job_name: 'linkerd-proxy'
       kubernetes_sd_configs:
       - role: pod
+        namespaces:
+          names: ["telecom"]
       relabel_configs:
       - source_labels:
         - __meta_kubernetes_pod_container_name
@@ -40,9 +42,6 @@ each namespace that has a prometheus/thanos deployment will need to add the foll
       # foo=bar
       - action: labelmap
         regex: __meta_kubernetes_pod_label_linkerd_io_(.+)
-      - source_labels: [__meta_kubernetes_namespace]
-        action: keep
-        regex: (kube-system|sys-.*)
 ```
 
 ### npols
