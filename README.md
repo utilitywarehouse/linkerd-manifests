@@ -52,18 +52,18 @@ apiVersion: networking.k8s.io/v1
 metadata:
   name: allow-control-plane-ingress
 spec:
-  podSelector:
-    matchExpressions:
-        - key: linkerd.io/proxy-component
-          operator: Exists
-  ingress:
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              linkerd.io/control-plane-ns: kube-system
-        - podSelector:
-            matchLabels:
-              linkerd.io/control-plane-component: controller
+    podSelector:
+        matchExpressions:
+            - key: linkerd.io/proxy-deployment
+              operator: Exists
+    ingress:
+        - from:
+            - namespaceSelector:
+                  matchLabels:
+                      name: kube-system
+            - podSelector:
+                matchLabels:
+                    linkerd.io/control-plane-component: controller
 ```
 this assumes you allow all egress
 
