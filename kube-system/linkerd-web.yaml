@@ -1,3 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: linkerd-web
+  labels:
+    kubernetes.io/ingress.class: traefik-private
+    app: linkerd-web
+spec:
+  rules:
+  - host: linkerd-web.example
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: linkerd-web
+          servicePort: 8084
+---
 kind: ServiceAccount
 apiVersion: v1
 metadata:
